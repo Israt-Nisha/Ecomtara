@@ -59,10 +59,10 @@ const PricingSection: React.FC = () => {
     <section className="section py-24" id="pricing">
       <div className="container-custom">
         <div className="text-center mb-8 space-y-2">
-          <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-[900] text-[#1a1a2e] leading-tight font-noto tracking-tight">
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-[900] text-[#1a1a2e] leading-tight font-heading tracking-tight">
             SaaS মূল্য পরিকল্পনা
           </h2>
-          <p className="text-[#555] text-lg lg:text-[20px] font-medium max-w-2xl mx-auto font-hind">
+          <p className="text-[#555] text-lg lg:text-[20px] font-medium max-w-2xl mx-auto font-sans">
             আপনার প্রয়োজন অনুযায়ী প্ল্যান নির্বাচন করুন
           </p>
         </div>
@@ -140,7 +140,7 @@ const PricingSection: React.FC = () => {
                 )}
               </div>
 
-              <button className={`w-full py-4 rounded-2xl font-bold font-hind transition-all duration-300 ${index === 1 ? 'bg-[#E67E22] hover:bg-[#D35400]' :
+              <button className={`w-full py-4 rounded-xl font-bold font-hind transition-all duration-300 ${index === 1 ? 'bg-[#E67E22] hover:bg-[#D35400]' :
                 index === 2 ? 'bg-[#27AE60] hover:bg-[#219150]' :
                   'bg-[#6346FE] hover:bg-[#5235E8]'
                 } text-white shadow-lg shadow-black/5 active:scale-95`}>

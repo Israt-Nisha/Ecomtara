@@ -66,10 +66,10 @@ export default function DemoSection() {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-8 space-y-2">
-          <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-[900] text-[#1a1a2e] leading-tight font-noto tracking-tight">
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-[900] text-[#1a1a2e] leading-tight font-heading tracking-tight">
             আমাদের লাইভ ডেমো
           </h2>
-          <p className="text-[#555] text-lg lg:text-[20px] font-medium max-w-2xl mx-auto font-hind">
+          <p className="text-[#555] text-lg lg:text-[20px] font-medium max-w-2xl mx-auto font-sans">
             বিভিন্ন ক্যাটাগরির প্রস্তুত ডেমো দেখুন
           </p>
         </div>
