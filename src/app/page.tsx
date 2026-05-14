@@ -6,7 +6,7 @@ import DemoSection from "@/components/DemoSection";
 import PricingSection from "@/components/PricingSection";
 import TrustedSection from "@/components/TrustedSection";
 import CTABanner from "@/components/CTABanner";
-import Footer from "@/components/Footer";
+
 
 export default function Home() {
   return (
@@ -19,7 +19,6 @@ export default function Home() {
       <PricingSection />
       <TrustedSection />
       <CTABanner />
-      {/* <Footer /> */}
     </main>
   );
 }
