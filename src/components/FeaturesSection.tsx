@@ -42,13 +42,11 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="section-padding bg-[#FCFCFE]">
+    <section id="features" className="section-padding">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center mb-20 space-y-5">
-          <div className="inline-flex items-center gap-2 bg-[#6C5CE7]/5 text-[#6C5CE7] px-4 py-1.5 rounded-full text-sm font-bold border border-[#6C5CE7]/10">
-            ⭐ সেরা ফিচারসমূহ
-          </div>
+        <div className="text-center mb-8 space-y-2">
+
           <h2 className="text-[36px] sm:text-[44px] lg:text-[52px] font-black text-[#1a1a2e] leading-tight font-heading">
             সবকিছু এক প্ল্যাটফর্মে
           </h2>
@@ -62,7 +60,7 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-[24px] p-8 border border-gray-100/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.03)] flex flex-col items-center text-center group hover:-translate-y-2 hover:shadow-xl hover:shadow-[#6C5CE7]/5 transition-all duration-500"
+              className="bg-white rounded-[24px] p-4 border border-gray-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.03)] flex flex-col items-center text-center group hover:-translate-y-2 hover:shadow-xl hover:shadow-[#6C5CE7]/5 transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-2xl bg-[#F8F7FF] flex items-center justify-center text-[#6C5CE7] mb-7 group-hover:bg-[#6C5CE7] group-hover:text-white transition-all duration-500 group-hover:rotate-6">
                 {feature.icon}
@@ -71,7 +69,7 @@ export default function FeaturesSection() {
                 <h3 className="text-[17px] font-bold text-[#1a1a2e] leading-tight font-heading">
                   {feature.title}
                 </h3>
-                <p className="text-[14px] font-medium text-[#555] leading-relaxed font-sans">
+                <p className="text-[14px] font-medium text-gray-600 leading-relaxed font-sans">
                   {feature.desc}
                 </p>
               </div>
