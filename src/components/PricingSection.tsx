@@ -1,132 +1,157 @@
-import { Check, Zap } from "lucide-react";
-import Image from "next/image";
+import React from 'react';
+import { Check } from 'lucide-react';
+import Image from 'next/image';
 
-const plans = [
+interface PricingPlan {
+  name: string;
+  price: string;
+  duration: string;
+  features: string[];
+  buttonText: string;
+  badge?: string;
+  badgeColor?: string;
+  isCustom?: boolean;
+  themeColor: string;
+}
+
+const plans: PricingPlan[] = [
   {
     name: "মাসিক প্ল্যান",
-    price: "৳2,999",
-    period: "/মাস",
-    features: ["৯,০০০ অর্ডার/মাস", "সকল ফিচার", "সকল ডেমো এক্সেস", "২৪/৭ সাপোর্ট"],
-    btnClass: "bg-[#6C5CE7] hover:bg-[#5A4AD1]",
-    borderTop: "border-t-[#6C5CE7]",
-    badge: null,
+    price: "২,৯৯৯",
+    duration: "/মাস",
+    features: ["১,০০০ অর্ডার/মাস", "সকল ফিচার", "সকল ডেমো এক্সেস", "২৪/৭ সাপোর্ট"],
+    buttonText: "এখন শুরু করুন",
+    themeColor: "text-[#6346FE]",
   },
   {
     name: "৬ মাসের প্ল্যান",
-    price: "৳14,999",
-    period: "/৬ মাস",
+    price: "১৪,৯৯৯",
+    duration: "/৬ মাস",
     features: ["৫,০০০ অর্ডার/মাস", "সকল ফিচার", "সকল ডেমো এক্সেস", "প্রাধান্য সাপোর্ট"],
-    btnClass: "bg-[#FF6B35] hover:bg-[#E85A24]",
-    borderTop: "border-t-[#FF6B35]",
+    buttonText: "এখন শুরু করুন",
     badge: "জনপ্রিয়",
-    badgeBg: "bg-[#FF6B35]",
+    badgeColor: "bg-[#E67E22]",
+    themeColor: "text-[#E67E22]",
   },
   {
     name: "বার্ষিক প্ল্যান",
-    price: "৳26,999",
-    period: "/বছর",
-    features: ["১৫,০০০ অর্ডার/মাস", "সকল ফিচার", "সকল ডেমো এক্সেস", "প্রাধান্য সাপোর্ট", "বছরে ২ মাস ফ্রি"],
-    btnClass: "bg-[#00B894] hover:bg-[#00A383]",
-    borderTop: "border-t-[#00B894]",
+    price: "২৬,৯৯৯",
+    duration: "/বছর",
+    features: ["১০,০০০ অর্ডার/মাস", "সকল ফিচার", "সকল ডেমো এক্সেস", "প্রাধান্য সাপোর্ট", "বছরে ২ মাস ফ্রি"],
+    buttonText: "এখন শুরু করুন",
     badge: "সাশ্রয়ী",
-    badgeBg: "bg-[#00B894]",
+    badgeColor: "bg-[#27AE60]",
+    themeColor: "text-[#27AE60]",
+  },
+  {
+    name: "লাইফটাইম প্ল্যান",
+    price: "",
+    duration: "",
+    features: ["কোন অর্ডার লিমিট নেই", "আপনার নিজের ডোমেইন", "আপনার নিজের সার্ভার", "এককালীন পেমেন্ট", "সম্পূর্ণ সোর্স কোড"],
+    buttonText: "বিস্তারিত জানতে যোগাযোগ করুন",
+    isCustom: true,
+    themeColor: "text-[#6346FE]",
   },
 ];
 
-export default function PricingSection() {
+const PricingSection: React.FC = () => {
   return (
-    <section id="pricing" className="section-padding bg-[#FCFCFE]">
+    <section className="section py-24" id="pricing">
       <div className="container-custom">
-        {/* Header */}
-        <div className="text-center mb-20 space-y-5">
-          <div className="inline-flex items-center gap-2 bg-[#6C5CE7]/5 text-[#6C5CE7] px-4 py-1.5 rounded-full text-sm font-bold border border-[#6C5CE7]/10">
-            💎 মূল্য পরিকল্পনা
-          </div>
-          <h2 className="text-[36px] sm:text-[44px] lg:text-[52px] font-black text-[#1a1a2e] leading-tight font-heading">
-            আপনার ব্যবসার জন্য সেরা প্ল্যান
+        <div className="text-center mb-8 space-y-2">
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-[900] text-[#1a1a2e] leading-tight font-noto tracking-tight">
+            SaaS মূল্য পরিকল্পনা
           </h2>
-          <p className="text-[#555] text-lg lg:text-[20px] font-medium max-w-2xl mx-auto font-sans">
-            আপনার ব্যবসার আকার অনুযায়ী সাশ্রয়ী মূল্যে সেরা সেবাটি বেছে নিন
+          <p className="text-[#555] text-lg lg:text-[20px] font-medium max-w-2xl mx-auto font-hind">
+            আপনার প্রয়োজন অনুযায়ী প্ল্যান নির্বাচন করুন
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 xl:gap-8">
-          {/* Subscription Cards */}
-          {plans.map((plan, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          {plans.map((plan, index) => (
             <div
-              key={i}
-              className="bg-white rounded-[32px] p-8 xl:p-10 border border-gray-100 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.05)] flex flex-col relative group hover:-translate-y-3 transition-all duration-700"
+              key={index}
+              className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-500 hover:-translate-y-2 ${plan.isCustom
+                ? 'bg-[#F5F3FF] border-purple-100'
+                : 'bg-white border-slate-100 shadow-sm hover:shadow-xl'
+                }`}
             >
               {plan.badge && (
-                <span className={`absolute top-6 right-6 ${plan.badgeBg} text-white text-[11px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-black/5`}>
+                <div className={`absolute top-6 right-6 ${plan.badgeColor} text-white text-[10px] font-bold px-3 py-1 rounded-sm uppercase tracking-wider`}>
                   {plan.badge}
-                </span>
-              )}
-              
-              <div className="mb-10">
-                <h3 className="text-[20px] font-black text-[#1a1a2e] mb-4 font-heading">{plan.name}</h3>
-                <div className="flex items-baseline">
-                  <span className="text-[32px] xl:text-[40px] font-black text-[#1a1a2e] font-english leading-none">{plan.price}</span>
-                  <span className="text-[15px] font-bold text-gray-400 font-english ml-1">{plan.period}</span>
                 </div>
+              )}
+
+              <div className="mb-8">
+                <h3 className={`text-xl font-bold font-noto mb-4 ${plan.themeColor}`}>
+                  {plan.name}
+                </h3>
+
+                {!plan.isCustom ? (
+                  <div className="flex items-baseline gap-1">
+                    <span className={`text-[32px] sm:text-[40px] font-[900] ${plan.themeColor} font-lexend`}>৳{plan.price}</span>
+                    <span className="text-slate-400 font-medium font-hind">{plan.duration}</span>
+                  </div>
+                ) : (
+                  <p className="text-[15px] text-slate-500 font-hind font-semibold">আপনার নিজের সার্ভারে হোস্টিং</p>
+                )}
               </div>
 
-              <ul className="space-y-4 mb-10 flex-1">
-                {plan.features.map((f, j) => (
-                  <li key={j} className="flex items-start gap-3 text-[14px] xl:text-[15px] font-bold text-[#555]/80 font-sans leading-snug">
-                    <div className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-emerald-500 stroke-[3px]" />
+              <div className="flex-1 mb-8">
+                {plan.isCustom ? (
+                  <div className="grid grid-cols-5 gap-2 items-center">
+                    <div className="col-span-3 space-y-3">
+                      {plan.features.map((feature, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <div className="mt-1 shrink-0 w-4 h-4 rounded bg-green-100 text-green-600 flex items-center justify-center">
+                            <Check size={12} strokeWidth={4} />
+                          </div>
+                          <span className="text-slate-600 font-hind text-[14px] font-medium leading-tight">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                    {f}
-                  </li>
-                ))}
-              </ul>
 
-              <button className={`w-full ${plan.btnClass} text-white font-black py-4 rounded-[18px] transition-all active:scale-95 text-[15px] shadow-xl shadow-black/5 group-hover:scale-[1.02]`}>
-                এখনই শুরু করুন
+                    <div className="col-span-2 flex justify-center">
+                      <Image
+                        src="/server.png"
+                        alt="Server"
+                        width={120}
+                        height={120}
+                        quality={75}
+                        className="w-full max-w-[120px] h-auto object-contain drop-shadow-md"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {plan.features.map((feature, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <div className="mt-1 shrink-0 w-4 h-4 rounded bg-green-100 text-green-600 flex items-center justify-center">
+                          <Check size={12} strokeWidth={4} />
+                        </div>
+                        <span className="text-slate-600 font-hind text-[14px] font-medium leading-tight">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <button className={`w-full py-4 rounded-2xl font-bold font-hind transition-all duration-300 ${index === 1 ? 'bg-[#E67E22] hover:bg-[#D35400]' :
+                index === 2 ? 'bg-[#27AE60] hover:bg-[#219150]' :
+                  'bg-[#6346FE] hover:bg-[#5235E8]'
+                } text-white shadow-lg shadow-black/5 active:scale-95`}>
+                {plan.buttonText}
               </button>
             </div>
           ))}
-
-          {/* Lifetime Card */}
-          <div className="bg-[#1a1a2e] rounded-[32px] p-8 xl:p-10 border border-gray-800 shadow-[0_30px_60px_-15px_rgba(26,26,46,0.2)] flex flex-col relative overflow-hidden group hover:-translate-y-3 transition-all duration-700">
-            {/* Glossy overlay effect */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#6C5CE7]/10 blur-[80px] -z-0" />
-            
-            <div className="flex-1 flex flex-col z-10">
-              <div className="mb-10">
-                <div className="flex items-center gap-2 text-[#6C5CE7] mb-2">
-                  <Zap className="w-5 h-5 fill-[#6C5CE7]" />
-                  <span className="text-[12px] font-black uppercase tracking-[2px]">Special Offer</span>
-                </div>
-                <h3 className="text-[24px] font-black text-white mb-2 font-heading">লাইফটাইম প্ল্যান</h3>
-                <p className="text-[14px] font-bold text-gray-400 font-sans">আপনার নিজের সার্ভারে হোস্টিং</p>
-              </div>
-              
-              <ul className="space-y-4 mb-10 flex-1">
-                {[
-                  "কোন অর্ডার লিমিট নেই",
-                  "আপনার নিজের ডোমেইন",
-                  "আপনার নিজের সার্ভার",
-                  "সম্পূর্ণ সোর্স কোড",
-                  "এককালীন পেমেন্ট",
-                ].map((f, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[14px] xl:text-[15px] font-bold text-gray-300 font-sans leading-snug">
-                    <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center shrink-0 mt-0.5 border border-white/10">
-                      <Check className="w-3 h-3 text-[#6C5CE7] stroke-[3px]" />
-                    </div>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <button className="bg-white text-[#1a1a2e] font-black py-4 rounded-[18px] transition-all active:scale-95 text-[15px] w-full shadow-2xl shadow-white/5 hover:bg-[#F8F7FF]">
-                বিস্তারিত জানুন
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default PricingSection;
