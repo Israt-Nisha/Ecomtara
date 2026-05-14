@@ -60,7 +60,7 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-[24px] p-4 border border-gray-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.03)] flex flex-col items-center text-center group hover:-translate-y-2 hover:shadow-xl hover:shadow-[#6C5CE7]/5 transition-all duration-500"
+              className="bg-white rounded-[24px] p-2 border border-gray-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.03)] flex flex-col items-center text-center group hover:-translate-y-2 hover:shadow-xl hover:shadow-[#6C5CE7]/5 transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-2xl bg-[#F8F7FF] flex items-center justify-center text-[#6C5CE7] mb-7 group-hover:bg-[#6C5CE7] group-hover:text-white transition-all duration-500 group-hover:rotate-6">
                 {feature.icon}
